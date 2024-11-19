@@ -23,6 +23,7 @@
             justify-content: center;
             background: #ffe0b2;
             padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         nav button {
@@ -40,7 +41,12 @@
         }
 
         .content {
+            display: none;
             padding: 20px;
+        }
+
+        .content.active {
+            display: block;
         }
 
         .card {
@@ -54,6 +60,14 @@
         .card h2 {
             color: #ff7043;
         }
+
+        .reminder {
+            background: #e0f7fa;
+            border-left: 5px solid #00796b;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -61,19 +75,97 @@
         <h1>Pembelajaran Sistem Rangka</h1>
     </header>
     <nav>
-        <button onclick="alert('Pengantar')">Pengantar</button>
-        <button onclick="alert('Tujuan')">Tujuan</button>
-        <button onclick="alert('Capaian Pembelajaran')">Capaian Pembelajaran</button>
-        <button onclick="alert('Kuis Canva')">Kuis Canva</button>
-        <button onclick="alert('Study Case Interaktif')">Study Case Interaktif</button>
-        <button onclick="alert('Reminder')">Reminder</button>
-        <button onclick="alert('Referensi Jurnal')">Referensi Jurnal</button>
+        <button onclick="showContent('pengantar')">Pengantar</button>
+        <button onclick="showContent('tujuan')">Tujuan</button>
+        <button onclick="showContent('capaian')">Capaian Pembelajaran</button>
+        <button onclick="showContent('kuis')">Kuis Canva</button>
+        <button onclick="showContent('studycase')">Study Case Interaktif</button>
+        <button onclick="showContent('reminder')">Reminder</button>
+        <button onclick="showContent('referensi')">Referensi Jurnal</button>
     </nav>
-    <div class="content">
-        <div class="card">
-            <h2>Welcome!</h2>
-            <p>Silakan pilih menu di atas untuk mulai belajar tentang sistem rangka.</p>
-        </div>
-    </div>
+    <main>
+        <!-- Pengantar -->
+        <section id="pengantar" class="content active">
+            <div class="card">
+                <h2>Pengantar</h2>
+                <p>Selamat datang di pembelajaran sistem rangka! Dalam materi ini, Anda akan mempelajari struktur, fungsi, dan pentingnya sistem rangka dalam tubuh manusia.</p>
+            </div>
+        </section>
+
+        <!-- Tujuan -->
+        <section id="tujuan" class="content">
+            <div class="card">
+                <h2>Tujuan Pembelajaran</h2>
+                <ul>
+                    <li>Siswa dapat memahami anatomi dan fisiologi Sistem Rangka.</li>
+                    <li>Siswa dapat mengetahui struktur tulang, bentuk tulang, proses pembentukan tulang, dan faktor pembentukan tulang.</li>
+                    <li>Siswa dapat memahami gangguan dari sistem gerak.</li>
+                    <li>Siswa mampu menerapkan materi dalam kehidupan sehari-hari untuk membangun pemahaman yang aplikatif.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Capaian Pembelajaran -->
+        <section id="capaian" class="content">
+            <div class="card">
+                <h2>Capaian Pembelajaran</h2>
+                <p><strong>Capaian Pembelajaran Umum:</strong> Siswa mampu memahami konsep anatomi dan fisiologi sistem rangka manusia.</p>
+                <p><strong>Capaian Pembelajaran Khusus:</strong></p>
+                <ul>
+                    <li>Menjelaskan fungsi utama sistem rangka dalam tubuh manusia.</li>
+                    <li>Mengenali struktur tulang berdasarkan bentuk dan jenisnya.</li>
+                    <li>Memahami proses osifikasi dan faktor yang memengaruhinya.</li>
+                    <li>Menganalisis gangguan sistem gerak seperti osteoporosis dan fraktur tulang.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Kuis Canva -->
+        <section id="kuis" class="content">
+            <div class="card">
+                <h2>Kuis Interaktif</h2>
+                <p>Uji pemahaman Anda dengan mengakses kuis berikut:</p>
+                <p><a href="https://promotionmixmienscatering.my.canva.site/musculoskeletal-system-science-educational-quiz-in-orange-gray-and-yellow-lined-and-illustrative-style-kisah-anda" target="_blank">Klik di sini untuk membuka kuis.</a></p>
+            </div>
+        </section>
+
+        <!-- Study Case -->
+        <section id="studycase" class="content">
+            <div class="card">
+                <h2>Study Case Interaktif</h2>
+                <p>Pelajari dan pecahkan kasus terkait sistem rangka untuk memperdalam pemahaman Anda.</p>
+            </div>
+        </section>
+
+        <!-- Reminder -->
+        <section id="reminder" class="content">
+            <div class="card">
+                <h2>Reminder</h2>
+                <div class="reminder">Jaga postur tubuhmu! Duduk tegak sekarang untuk tulang belakang yang sehat.</div>
+                <div class="reminder">Sudah 30 menit belajar, waktunya peregangan ringan.</div>
+                <div class="reminder">Kesehatan tulang dimulai dari meja makan. Jangan lupa makanan kaya kalsium hari ini!</div>
+            </div>
+        </section>
+
+        <!-- Referensi Jurnal -->
+        <section id="referensi" class="content">
+            <div class="card">
+                <h2>Referensi Jurnal</h2>
+                <ul>
+                    <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=id&user=5nJ7MJAAAAAJ&citation_for_view=5nJ7MJAAAAAJ:2osOgNQ5qMEC" target="_blank">Jurnal 1</a></li>
+                    <li><a href="https://www.fertstert.org/article/S0015-0282(19)32475-6/pdf" target="_blank">Jurnal 2</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showContent(sectionId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
+
